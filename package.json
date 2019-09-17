@@ -2,7 +2,7 @@
   "name": "bestlibever",
   "version": "0.1.0",
   "description": "Best lib forever",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "build": "tsc",
