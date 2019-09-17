@@ -35,9 +35,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '8.x'
-    - name: Install, build, test
+    - name: Install and check codestyle
       run: |
         npm install
-        npm codestyle
+        npm run codestyle
       env:
         CI: true
