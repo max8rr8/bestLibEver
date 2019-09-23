@@ -1,9 +1,9 @@
 name: Publish beta
 
 on:
-  push:
-    branches:
-      - master
+  release
+  
+  
 
 jobs:
   test:
@@ -28,6 +28,13 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm run build
-      - run: npm publish --tag beta
+      - name: Publish beta
+        if: ${{ github.event.prerelease }}
+        run: npm publish --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm}}
+      - name: Publish stable
+        if: ${{ !github.event.prerelease }}
+        run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm}}
