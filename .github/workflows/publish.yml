@@ -34,7 +34,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm}}
       - name: Publish stable
-        if: !github.event.prerelease
+        if: ! github.event.prerelease
         run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm}}
