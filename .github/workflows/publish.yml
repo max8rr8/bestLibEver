@@ -38,3 +38,12 @@ jobs:
         run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm}}
+          
+      - name: Build and Deploy dосs
+        uses: JamesIves/github-pages-deploy-action@master
+        if: github.event.prerelease == false
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          BUILD_SCRIPT: npm install && npm run typedoc
